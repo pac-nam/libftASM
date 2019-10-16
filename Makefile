@@ -30,6 +30,9 @@ SRC_FILES = ft_isdigit.s					\
 			ft_isprint.s					\
 			ft_isalpha.s					\
 			ft_isalnum.s					\
+			ft_isascii.s					\
+			ft_tolower.s					\
+			ft_toupper.s					\
 			ft_bzero.s						\
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
