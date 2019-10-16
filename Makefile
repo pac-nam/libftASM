@@ -34,6 +34,10 @@ SRC_FILES = ft_isdigit.s					\
 			ft_tolower.s					\
 			ft_toupper.s					\
 			ft_bzero.s						\
+			ft_strcpy.s						\
+			ft_strcat.s						\
+			ft_puts.s						\
+			ft_strlen.s						\
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
 

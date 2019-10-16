@@ -12,6 +12,10 @@ int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strcat(char *dst, const char *src);
+void	ft_puts(const char *str);
+size_t	ft_strlen(const char *str);
 
 char		*ft_memset(char *ptr, int i, char c)
 {
@@ -53,6 +57,7 @@ void		ft_test_bzero(void)
 		printf("bzero test error %5s != %5s\n", tab, tab2);
 		++error;
 	}
+	ft_bzero(NULL, 3);
 	printf("bzero   test end %d error detected\n", error);
 }
 
@@ -157,6 +162,82 @@ void		ft_test_toupper(void)
 	printf("toupper test end %d error detected\n", error);
 }
 
+void		ft_test_strcpy(void)
+{
+	char	mine[6];
+	char	sys[6];
+	int		error = 0;
+
+	ft_strcpy(&(mine[0]), "");
+	strcpy(&(sys[0]), "");
+	if (strcmp(sys, mine))
+	{
+		printf("error strcpy :sys |%s| != mine |%s|\n", sys, mine);
+		++error;
+	}
+	ft_strcpy(&(mine[0]), "hello");
+	strcpy(&(sys[0]), "hello");
+	if (strcmp(sys, mine))
+	{
+		printf("error strcpy :sys |%s| != mine |%s|\n", sys, mine);
+		++error;
+	}
+	ft_strcpy(NULL, &(mine[0]));
+	ft_strcpy(&(mine[0]), NULL);
+	ft_strcpy(NULL, NULL);
+	printf("strcpy  test end %d error detected\n", error);
+}
+
+void		ft_test_strcat(void)
+{
+	char	mine[13];
+	char	sys[13];
+	char	*to_copy = " world";
+	int		error = 0;
+	
+	bzero(&(mine[0]), 10);
+	strcpy(&(mine[0]), "hello");
+	ft_strcat(&(mine[0]), to_copy);
+	bzero(&(sys[0]), 10);
+	strcpy(&(sys[0]), "hello");
+	strcat(&(sys[0]), to_copy);
+	if (strcmp(sys, mine))
+	{
+		printf("error: sys |%s| != mine |%s|\n", sys, mine);
+		++error;
+	}
+	ft_strcat(NULL, to_copy);
+	ft_strcat(&(mine[0]), NULL);
+	ft_strcat(NULL, NULL);
+	printf("strcat  test end %d error detected\n", error);
+}
+
+void		ft_test_puts(void)
+{
+	ft_puts(NULL);
+	ft_puts("puts    test end 0 error detected\n");
+}
+
+void		ft_test_strlen(void)
+{
+	char	str[11];
+	int		i = 11;
+	int		error = 0;
+
+	strcpy(&(str[0]), "0123456789");
+	while (--i >= 0)
+	{
+		str[i] = '\0';
+		if (strlen(str) != ft_strlen(str))
+		{
+			printf("error strlen :%d != %d | string: %s\n", strlen(str), ft_strlen(str), str);
+			++error;
+		}
+	}
+	ft_strlen(NULL);
+	printf("strlen  test end %d error detected\n", error);
+}
+
 int			main(void)
 {
 	ft_test_bzero();
@@ -166,5 +247,9 @@ int			main(void)
 	ft_test_isascii();
 	ft_test_tolower();
 	ft_test_toupper();
+	ft_test_strcpy();
+	ft_test_strcat();
+	ft_test_puts();
+	ft_test_strlen();
 	return (0);
 }
