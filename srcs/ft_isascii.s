@@ -1,14 +1,17 @@
 section .text
-    global _ft_isascii
+	global _ft_isascii
 
 ret_zero:
-    mov     rax, 0
-    ret
+	mov		rax, 0		; rax = 0
+return:
+	pop		rdi			; restore rdi
+	ret					; return
 
 _ft_isascii:
-    cmp     rdi, 0
-    jl      ret_zero
-    cmp     rdi, 128
-    jg      ret_zero
-    mov     rax, 1
-    ret
+	push	rdi			; save rdi
+	cmp		rdi, 0		; if (rdi < 0)
+	jl		ret_zero	; jump to ret_zero
+	cmp		rdi, 128	; if (rdi > 128)
+	jg		ret_zero	; jump to ret_zero
+	mov		rax, 1		; rax = 1
+	jmp		return		; jump to return

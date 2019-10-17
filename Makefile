@@ -38,6 +38,7 @@ SRC_FILES = ft_isdigit.s					\
 			ft_strcat.s						\
 			ft_puts.s						\
 			ft_strlen.s						\
+			ft_memset.s						\
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
 

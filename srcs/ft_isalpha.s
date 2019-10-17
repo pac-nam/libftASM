@@ -1,26 +1,25 @@
 section .text
-    global _ft_isalpha
+	global _ft_isalpha
 
 ret_zero:
-    mov		rax, 0
-    ret
+	mov		rax, 0		; rax = 0
+return:
+	pop		rdi			; restore rdi
+	ret					; return
 
-ret_one:
-	mov		rax, 1
-	ret
+_ft_isalpha:
+	push	rdi			; save rdi
+	cmp		rdi, 96		; if (rdi > 'a' - 1)
+	jg		is_lower	; jump to is_lower
+	cmp		rdi, 65		; if (rdi > 'A')
+	jl		ret_zero	; jump to ret_zero
+	cmp		rdi, 90		; if (rdi > 'Z')
+	jg		ret_zero	; jump to ret_zero
+	mov		rax, 1		; rax = 1
+	jmp		return		; jump to return
 
 is_lower:
-	cmp		rdi, 122
-    jg		ret_zero
-	mov		rax, 1
-	ret
-	
-_ft_isalpha:
-    cmp		rdi, 96
-    jg		is_lower
-    cmp		rdi, 65
-    jl		ret_zero
-    cmp		rdi, 90
-    jg		ret_zero
-    mov		rax, 1
-    ret
+	cmp		rdi, 122	; if (rdi < 'z')
+	jg		ret_zero	; jump to ret_zero
+	mov		rax, 1		; rax = 1
+	jmp		return		; jump to return

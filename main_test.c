@@ -12,45 +12,40 @@ int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strcpy(size_t *, const char *src);
 char	*ft_strcat(char *dst, const char *src);
 void	ft_puts(const char *str);
 size_t	ft_strlen(const char *str);
-
-char		*ft_memset(char *ptr, int i, char c)
-{
-	while (--i >= 0)
-		ptr[i] = c;
-	return (ptr);
-}
+void	*ft_memset(void *ptr, int c, size_t size);
 
 void		ft_test_bzero(void)
 {
 	char		tab[5];
 	char		tab2[5];
 	int error = 0;
+	int	no_warning = 0;
 	
-	ft_memset(&(tab[0]), 5, 'a');
+	ft_memset(&(tab[0]), 'a', 5);
 	ft_bzero(&(tab[0]), 3);
-	ft_memset(&(tab2[0]), 5, 'a');
+	ft_memset(&(tab2[0]), 'a', 5);
 	bzero(&(tab2[0]), 3);
 	if (strncmp(tab, tab2, 5))
 	{
 		printf("bzero test error %5s != %5s\n", tab, tab2);
 		++error;
 	}
-	ft_memset(&(tab[0]), 5, 'a');
-	ft_bzero(&(tab[0]), 0);
-	ft_memset(&(tab2[0]), 5, 'a');
-	bzero(&(tab2[0]), 0);
+	ft_memset(&(tab[0]), 'a', 5);
+	ft_bzero(&(tab[0]), no_warning);
+	ft_memset(&(tab2[0]), 'a', 5);
+	bzero(&(tab2[0]), no_warning);
 	if (strncmp(tab, tab2, 5))
 	{
 		printf("bzero test error %5s != %5s\n", tab, tab2);
 		++error;
 	}
-	ft_memset(&(tab[0]), 5, 'a');
+	ft_memset(&(tab[0]), 'a', 5);
 	ft_bzero(&(tab[0]), 5);
-	ft_memset(&(tab2[0]), 5, 'a');
+	ft_memset(&(tab2[0]), 'a', 5);
 	bzero(&(tab2[0]), 5);
 	if (strncmp(tab, tab2, 5))
 	{
@@ -230,7 +225,7 @@ void		ft_test_strlen(void)
 		str[i] = '\0';
 		if (strlen(str) != ft_strlen(str))
 		{
-			printf("error strlen :%d != %d | string: %s\n", strlen(str), ft_strlen(str), str);
+			printf("error strlen :%ld != %ld | string: %s\n", strlen(str), ft_strlen(str), str);
 			++error;
 		}
 	}
@@ -238,8 +233,33 @@ void		ft_test_strlen(void)
 	printf("strlen  test end %d error detected\n", error);
 }
 
+void		ft_test_memset()
+{
+	char		tab[6];
+	int			error = 0;
+
+	tab[5] = '\0';
+	ft_memset(&(tab[0]), 'a', 5);
+	if (strcmp(tab, "aaaaa"))
+	{
+		printf("error memset :%s != %s\n", tab, "aaaaa");
+		++error;
+	}
+	ft_memset(&(tab[0]), 'c', 0);
+	if (strcmp(tab, "aaaaa"))
+	{
+		printf("error memset :%s != %s\n", tab, "aaaaa");
+		++error;
+	}
+	ft_memset(NULL, ' ', 10);
+	printf("memset  test end %d error detected\n", error);
+}
+
 int			main(void)
 {
+	ft_test_puts();
+	ft_test_strlen();
+	ft_test_memset();
 	ft_test_bzero();
 	ft_test_isdigit();
 	ft_test_isalnum();
@@ -249,7 +269,5 @@ int			main(void)
 	ft_test_toupper();
 	ft_test_strcpy();
 	ft_test_strcat();
-	ft_test_puts();
-	ft_test_strlen();
 	return (0);
 }
