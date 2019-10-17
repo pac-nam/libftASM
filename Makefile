@@ -3,14 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tbleuse <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 10:34:52 by tbleuse           #+#    #+#              #
-#    Updated: 2018/10/23 13:48:46 by tbleuse          ###   ########.fr        #
+#    Updated: 2019/10/17 16:39:43 by tbleuse          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftasm
+
+TEST_NAME = test_asm
 
 CC = gcc
 
@@ -26,21 +28,44 @@ OBJ_FOLDER = objs
 
 SRC_FOLDER = srcs
 
-SRC_FILES = ft_isdigit.s					\
-			ft_isprint.s					\
-			ft_isalpha.s					\
+TEST_FOLDER = tests_unitaires
+
+SRC_FILES = ft_bzero.s						\
+			ft_cat.s						\
 			ft_isalnum.s					\
+			ft_isalpha.s					\
 			ft_isascii.s					\
+			ft_isdigit.s					\
+			ft_isprint.s					\
+			ft_memcpy.s						\
+			ft_memset.s						\
+			ft_puts.s						\
+			ft_strcat.s						\
+			ft_strcpy.s						\
+			ft_strlen.s						\
 			ft_tolower.s					\
 			ft_toupper.s					\
-			ft_bzero.s						\
-			ft_strcpy.s						\
-			ft_strcat.s						\
-			ft_puts.s						\
-			ft_strlen.s						\
-			ft_memset.s						\
+
+TEST_FILES = main_test.c					\
+			test_bzero.c					\
+			test_cat.c						\
+			test_isalnum.c					\
+			test_isalpha.c					\
+			test_isascii.c					\
+			test_isdigit.c					\
+			test_isprint.c					\
+			test_memcpy.c					\
+			test_memset.c					\
+			test_puts.c						\
+			test_strcat.c					\
+			test_strcpy.c					\
+			test_strlen.c					\
+			test_tolower.c					\
+			test_toupper.c					\
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
+
+TEST = $(addprefix $(TEST_FOLDER)/, $(TEST_FILES))
 
 OBJ = $(addprefix $(OBJ_FOLDER)/, $(SRC_FILES:.s=.o))
 
@@ -63,11 +88,15 @@ clean :
 	@echo "\033[33m[ ✔ ] $(NAME) objects deleted\033[0m"
 
 fclean : clean
-	@/bin/rm -f $(NAME).a
+	@/bin/rm -f $(NAME).a $(TEST_NAME)
 	@echo "\033[33m[ ✔ ] $(NAME) deleted\033[0m"
 
 lib : all clean
 
 re : fclean all
+
+$(TEST_NAME) : all
+	@$(CC) $(TEST) $(NAME).a -Iincludes -o $(TEST_NAME)
+	@./$(TEST_NAME)
 
 .PHONY: $(NAME) $(OBJ_FOLDER)
