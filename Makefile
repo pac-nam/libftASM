@@ -6,7 +6,7 @@
 #    By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 10:34:52 by tbleuse           #+#    #+#              #
-#    Updated: 2019/10/18 11:50:07 by tbleuse          ###   ########.fr        #
+#    Updated: 2019/10/18 15:53:30 by tbleuse          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_FILES = ft_bzero.s						\
 			ft_isascii.s					\
 			ft_isdigit.s					\
 			ft_isprint.s					\
+			ft_memcmp.s						\
 			ft_memcpy.s						\
 			ft_memset.s						\
 			ft_puts.s						\
@@ -55,6 +56,7 @@ TEST_FILES = main_test.c					\
 			test_isascii.c					\
 			test_isdigit.c					\
 			test_isprint.c					\
+			test_memcmp.c					\
 			test_memcpy.c					\
 			test_memset.c					\
 			test_puts.c						\
