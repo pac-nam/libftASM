@@ -4,11 +4,9 @@ section .text
 ret_zero:
 	mov		rax, 0		; rax = 0
 return:
-	pop		rdi			; restore rdi
 	ret					; return
 
 _ft_isalpha:
-	push	rdi			; save rdi
 	cmp		rdi, 96		; if (rdi > 'a' - 1)
 	jg		is_lower	; jump to is_lower
 	cmp		rdi, 65		; if (rdi > 'A')

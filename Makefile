@@ -6,13 +6,13 @@
 #    By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 10:34:52 by tbleuse           #+#    #+#              #
-#    Updated: 2019/10/17 16:39:43 by tbleuse          ###   ########.fr        #
+#    Updated: 2019/10/18 11:50:07 by tbleuse          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftasm
+NAME = libfts.a
 
-TEST_NAME = test_asm
+TEST_NAME = test
 
 CC = gcc
 
@@ -42,6 +42,7 @@ SRC_FILES = ft_bzero.s						\
 			ft_puts.s						\
 			ft_strcat.s						\
 			ft_strcpy.s						\
+			ft_strdup.s						\
 			ft_strlen.s						\
 			ft_tolower.s					\
 			ft_toupper.s					\
@@ -59,6 +60,7 @@ TEST_FILES = main_test.c					\
 			test_puts.c						\
 			test_strcat.c					\
 			test_strcpy.c					\
+			test_strdup.c					\
 			test_strlen.c					\
 			test_tolower.c					\
 			test_toupper.c					\
@@ -69,12 +71,12 @@ TEST = $(addprefix $(TEST_FOLDER)/, $(TEST_FILES))
 
 OBJ = $(addprefix $(OBJ_FOLDER)/, $(SRC_FILES:.s=.o))
 
-all : $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ_FOLDER) $(OBJ)
-	@ar rc $@.a $(OBJ)
-	@ranlib $@.a
-	@echo "\033[32m[ ✔ ] $@ compiled\033[0m"
+	@ar rc $@ $(OBJ)
+	@ranlib $@
+	@echo "\033[32m[ √ ] $@ compiled\033[0m"
 
 $(OBJ_FOLDER):
 	@mkdir -p $@
@@ -83,20 +85,20 @@ $(OBJ_FOLDER):
 $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.s
 	@$(CASM) -f macho64 $< -o $@
 
-clean :
+clean:
 	@/bin/rm -rf $(OBJ_FOLDER)
-	@echo "\033[33m[ ✔ ] $(NAME) objects deleted\033[0m"
+	@echo "\033[33m[ √ ] $(NAME) objects deleted\033[0m"
 
-fclean : clean
-	@/bin/rm -f $(NAME).a $(TEST_NAME)
-	@echo "\033[33m[ ✔ ] $(NAME) deleted\033[0m"
+fclean: clean
+	@/bin/rm -f $(NAME) $(TEST_NAME)
+	@echo "\033[33m[ √ ] $(NAME) deleted\033[0m"
 
-lib : all clean
+lib: all clean
 
-re : fclean all
+re: fclean all
 
 $(TEST_NAME) : all
-	@$(CC) $(TEST) $(NAME).a -Iincludes -o $(TEST_NAME)
+	@$(CC) $(TEST) $(NAME) -I includes -o $(TEST_NAME)
 	@./$(TEST_NAME)
 
-.PHONY: $(NAME) $(OBJ_FOLDER)
+.PHONY:

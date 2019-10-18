@@ -6,11 +6,12 @@
 /*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:30:48 by tbleuse           #+#    #+#             */
-/*   Updated: 2019/10/17 16:59:39 by tbleuse          ###   ########.fr       */
+/*   Updated: 2019/10/18 14:02:38 by tbleuse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_test_bzero(void);
+void	ft_test_cat(void);
 void	ft_test_isalnum(void);
 void	ft_test_isalpha(void);
 void	ft_test_isascii(void);
@@ -21,6 +22,7 @@ void	ft_test_memset(void);
 void	ft_test_puts(void);
 void	ft_test_strcat(void);
 void	ft_test_strcpy(void);
+void	ft_test_strdup(void);
 void	ft_test_strlen(void);
 void	ft_test_tolower(void);
 void	ft_test_toupper(void);
@@ -41,5 +43,7 @@ int			main(void)
 	ft_test_strcpy();
 	ft_test_strcat();
 	ft_test_memcpy();
+	ft_test_strdup();
+	ft_test_cat();
 	return (0);
 }

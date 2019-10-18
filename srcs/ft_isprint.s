@@ -4,11 +4,9 @@ section .text
 ret_zero:
 	mov		rax, 0		; rax = 0
 return:
-	pop		rdi			; restore rdi
 	ret					; return
 
 _ft_isprint:
-	push	rdi			; save rdi
 	cmp		rdi, 126	; if (rdi > printable_max)
 	jg		ret_zero	; jump to return 0
 	cmp		rdi, 32		; if (rdi < printable_min)

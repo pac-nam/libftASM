@@ -1,6 +1,3 @@
-section .data
-	debug db "debug", 10
-
 section .text
 	global _ft_strcat
 	extern _ft_strlen
