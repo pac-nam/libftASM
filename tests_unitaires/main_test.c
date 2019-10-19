@@ -6,7 +6,7 @@
 /*   By: thomasbleuse <thomasbleuse@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:30:48 by tbleuse           #+#    #+#             */
-/*   Updated: 2019/10/19 17:51:07 by thomasbleus      ###   ########.fr       */
+/*   Updated: 2019/10/19 18:31:27 by thomasbleus      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_test_tolower(void);
 void	ft_test_toupper(void);
 
 void	ft_test_memcmp(void);
+void	ft_test_strcmp(void);
 void	ft_test_memchr(void);
 void	ft_test_strchr(void);
 
@@ -54,5 +55,6 @@ int			main(void)
 	ft_test_memchr();
 	ft_test_strchr();
 	ft_test_memcmp();
+	ft_test_strcmp();
 	return (0);
 }
