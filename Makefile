@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+         #
+#    By: thomasbleuse <thomasbleuse@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 10:34:52 by tbleuse           #+#    #+#              #
-#    Updated: 2019/10/18 15:53:30 by tbleuse          ###   ########.fr        #
+#    Updated: 2019/10/19 11:29:07 by thomasbleus      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRC_FILES = ft_bzero.s						\
 			ft_isascii.s					\
 			ft_isdigit.s					\
 			ft_isprint.s					\
-			ft_memcmp.s						\
 			ft_memcpy.s						\
 			ft_memset.s						\
 			ft_puts.s						\
@@ -47,6 +46,9 @@ SRC_FILES = ft_bzero.s						\
 			ft_strlen.s						\
 			ft_tolower.s					\
 			ft_toupper.s					\
+			ft_memcmp.s						\
+			ft_memchr.s						\
+			ft_strchr.s						\
 
 TEST_FILES = main_test.c					\
 			test_bzero.c					\
@@ -56,7 +58,6 @@ TEST_FILES = main_test.c					\
 			test_isascii.c					\
 			test_isdigit.c					\
 			test_isprint.c					\
-			test_memcmp.c					\
 			test_memcpy.c					\
 			test_memset.c					\
 			test_puts.c						\
@@ -66,6 +67,9 @@ TEST_FILES = main_test.c					\
 			test_strlen.c					\
 			test_tolower.c					\
 			test_toupper.c					\
+			test_memcmp.c					\
+			test_memchr.c					\
+			test_strchr.c					\
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
 

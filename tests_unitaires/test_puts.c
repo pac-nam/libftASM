@@ -14,7 +14,7 @@
 
 void		ft_test_puts(void)
 {
-	ft_puts(NULL);
 	ft_puts("");
+	ft_puts(NULL);
 	ft_puts("puts    test end 0 error detected");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftasm.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thomasbleuse <thomasbleuse@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:20:33 by tbleuse           #+#    #+#             */
-/*   Updated: 2019/10/18 15:54:10 by tbleuse          ###   ########.fr       */
+/*   Updated: 2019/10/19 11:30:05 by thomasbleus      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 void	*ft_memcpy(void *dst, void *src, size_t size);
-int		ft_memcmp(void *ptr, void *ptr2, size_t size);
 void	*ft_memset(void *ptr, int c, size_t size);
 void	ft_puts(const char *str);
 char	*ft_strcat(char *dst, const char *src);
@@ -37,4 +36,7 @@ size_t	ft_strlen(const char *str);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 
+int		ft_memcmp(void *ptr, void *ptr2, size_t size);
+void	*ft_memchr(void *ptr, int c, size_t size);
+char	*ft_strchr(char *str, int c);
 #endif
