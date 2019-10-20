@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thomasbleuse <thomasbleuse@student.42.f    +#+  +:+       +#+         #
+#    By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 10:34:52 by tbleuse           #+#    #+#              #
-#    Updated: 2019/10/20 08:36:11 by thomasbleus      ###   ########.fr        #
+#    Updated: 2019/10/20 13:22:22 by tbleuse          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC_FILES = ft_bzero.s						\
 			ft_memchr.s						\
 			ft_strchr.s						\
 			ft_memrev.s						\
+			ft_memrchr.s					\
 
 TEST_FILES = main_test.c					\
 			test_bzero.c					\

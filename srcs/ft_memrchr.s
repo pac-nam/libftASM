@@ -13,6 +13,7 @@ _ft_memrchr:
 	je		.null				; jump to .null
 	mov		rax, rdi			; rax = rdi
 	add		rax, rdx			; rax += rdx
+	dec		rax					; rax--
 .looop:
 	cmp		byte[rax], sil		; if (rax == rsi)
 	je		.end				; jump to .end 

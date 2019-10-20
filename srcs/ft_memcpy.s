@@ -10,7 +10,7 @@ _ft_memcpy:
 	cmp		rdi, 0		; if (rdi == NULL)
 	je		return		; jump to return
 	cmp		rsi, 0		; if (rsi == NULL)
-	je		return		; ump to return
+	je		return		; jump to return
 	mov		rax, rsi	; rax = rsi
 	mov		rcx, rdx	; rcx = rdx
 	rep movsb			; while (--rcx) {rdi[rcx] = rax[rcx]}
