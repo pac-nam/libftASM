@@ -6,7 +6,7 @@
 /*   By: thomasbleuse <thomasbleuse@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:20:33 by tbleuse           #+#    #+#             */
-/*   Updated: 2019/10/19 18:31:56 by thomasbleus      ###   ########.fr       */
+/*   Updated: 2019/10/20 08:36:01 by thomasbleus      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		ft_memcmp(void *ptr, void *ptr2, size_t size);
 int		ft_strcmp(void *str, void *str2);
 void	*ft_memchr(void *ptr, int c, size_t size);
 char	*ft_strchr(char *str, int c);
-
+void	*ft_memrev(void *ptr, size_t size);
+void	*ft_memrchr(void *ptr, int c, size_t size);
 
 #endif

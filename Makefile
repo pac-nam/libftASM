@@ -6,7 +6,7 @@
 #    By: thomasbleuse <thomasbleuse@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 10:34:52 by tbleuse           #+#    #+#              #
-#    Updated: 2019/10/19 18:39:46 by thomasbleus      ###   ########.fr        #
+#    Updated: 2019/10/20 08:36:11 by thomasbleus      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC_FILES = ft_bzero.s						\
 			ft_strcmp.s						\
 			ft_memchr.s						\
 			ft_strchr.s						\
+			ft_memrev.s						\
 
 TEST_FILES = main_test.c					\
 			test_bzero.c					\
@@ -72,6 +73,8 @@ TEST_FILES = main_test.c					\
 			test_strcmp.c					\
 			test_memchr.c					\
 			test_strchr.c					\
+			test_memrev.c					\
+			test_memrchr.c					\
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
 
