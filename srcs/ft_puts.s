@@ -30,7 +30,6 @@ put_bacn:
 	mov		rdx, 1			; rdx(len) = 1
 	mov		rax, 0x2000004	; rax = write
 	syscall					; write(rdi, rsi, rdx)
-;return_10:
 	mov		rax, 10			; rax = 10
 	pop		rdi				; restore rdi
 	ret						; return

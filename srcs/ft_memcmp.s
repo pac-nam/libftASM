@@ -17,7 +17,7 @@ section .text
 	ret							; return
 
 _ft_memcmp:
-	cmp		rdx, 0				; if (rdi == NULL)
+	cmp		rdx, 0				; if (rdx == 0)
 	je		.return_zero		; jump to return
 	cmp		rdi, 0				; if (rdi == NULL)
 	je		.rdi_null			; jump to return

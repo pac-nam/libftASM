@@ -6,7 +6,7 @@
 #    By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 10:34:52 by tbleuse           #+#    #+#              #
-#    Updated: 2019/10/20 13:22:22 by tbleuse          ###   ########.fr        #
+#    Updated: 2019/10/21 15:15:35 by tbleuse          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,19 @@ SRC_FILES = ft_bzero.s						\
 			ft_strchr.s						\
 			ft_memrev.s						\
 			ft_memrchr.s					\
+			ft_strrchr.s					\
+			ft_strncmp.s					\
+			ft_strequ.s						\
+			ft_strnequ.s					\
+			ft_strrev.s						\
+			ft_strnchr.s					\
+			ft_strstr.s						\
+			ft_putchar.s					\
+			ft_putchar_fd.s					\
+			ft_putstr.s						\
+			ft_putstr_fd.s					\
+			ft_putendl.s					\
+			ft_putendl_fd.s					\
 
 TEST_FILES = main_test.c					\
 			test_bzero.c					\
@@ -76,6 +89,14 @@ TEST_FILES = main_test.c					\
 			test_strchr.c					\
 			test_memrev.c					\
 			test_memrchr.c					\
+			test_strrchr.c					\
+			test_strncmp.c					\
+			test_strequ.c					\
+			test_strnequ.c					\
+			test_strrev.c					\
+			test_strnchr.c					\
+			test_strstr.c					\
+			test_puttrucs.c					\
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
 
@@ -88,7 +109,7 @@ all: $(NAME)
 $(NAME): $(OBJ_FOLDER) $(OBJ)
 	@ar rc $@ $(OBJ)
 	@ranlib $@
-	@echo "\033[32m[ √ ] $@ compiled\033[0m"
+	@echo "\033[32m[ V ] $@ compiled\033[0m"
 
 $(OBJ_FOLDER):
 	@mkdir -p $@
@@ -99,11 +120,11 @@ $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.s
 
 clean:
 	@/bin/rm -rf $(OBJ_FOLDER)
-	@echo "\033[33m[ √ ] $(NAME) objects deleted\033[0m"
+	@echo "\033[33m[ V ] $(NAME) objects deleted\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME) $(TEST_NAME)
-	@echo "\033[33m[ √ ] $(NAME) deleted\033[0m"
+	@echo "\033[33m[ V ] $(NAME) deleted\033[0m"
 
 lib: all clean
 

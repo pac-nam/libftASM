@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasbleuse <thomasbleuse@student.42.f    +#+  +:+       +#+        */
+/*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:30:48 by tbleuse           #+#    #+#             */
-/*   Updated: 2019/10/20 08:33:13 by thomasbleus      ###   ########.fr       */
+/*   Updated: 2019/10/21 14:55:10 by tbleuse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ void	ft_test_memchr(void);
 void	ft_test_strchr(void);
 void	ft_test_memrev(void);
 void	ft_test_memrchr(void);
+void	ft_test_strrchr(void);
+void	ft_test_strncmp(void);
+void	ft_test_strequ(void);
+void	ft_test_strnequ(void);
+void	ft_test_strrev(void);
+void	ft_test_strnchr(void);
+void	ft_test_strstr(void);
+void	ft_test_puttrucs(void);
 
 int			main(void)
 {
@@ -54,11 +62,20 @@ int			main(void)
 	ft_test_strcat();
 	ft_test_memcpy();
 	ft_test_strdup();
+/*--------------------------BONUS----------------------*/
 	ft_test_memchr();
 	ft_test_strchr();
 	ft_test_memcmp();
 	ft_test_strcmp();
 	ft_test_memrev();
 	ft_test_memrchr();
+	ft_test_strrchr();
+	ft_test_strncmp();
+	ft_test_strequ();
+	ft_test_strnequ();
+	ft_test_strrev();
+	ft_test_strnchr();
+	ft_test_strstr();
+	ft_test_puttrucs();
 	return (0);
 }

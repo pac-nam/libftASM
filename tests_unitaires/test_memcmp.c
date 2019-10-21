@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_memcmp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thomasbleuse <thomasbleuse@student.42.f    +#+  +:+       +#+        */
+/*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:23:18 by tbleuse           #+#    #+#             */
-/*   Updated: 2019/10/19 20:13:22 by thomasbleus      ###   ########.fr       */
+/*   Updated: 2019/10/21 15:22:21 by tbleuse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,13 @@ void		ft_test_memcmp(void)
 	if (resm != ress)
 	{
 		printf("error 11 memcmp:sys %d != mine %d\n", ress, resm);
+		++error;
+	}
+	resm = ft_memcmp("", "", 0);
+	ress = memcmp("", "", 0);
+	if (resm != ress)
+	{
+		printf("error 12 memcmp:sys %d != mine %d\n", ress, resm);
 		++error;
 	}
 	ft_memcmp(NULL, "seg", 10);
