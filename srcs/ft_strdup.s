@@ -4,14 +4,14 @@ section .text
 	extern _ft_strlen
 	extern _malloc
 
-return:
+.return:
 	pop		rax					; restore rdi in rax
 	ret							; return
 
 _ft_strdup:
 	push	rdi					; save rdi
 	cmp		rdi, 0				; if (rdi == NULL)
-	je		return				; jump to return
+	je		.return				; jump to .return
 	call	_ft_strlen			; rax = ft_strlen(rdi)
 	mov		rdi, rax			; rdx = rax
 	call	_malloc				; rax = malloc(rdi)
@@ -19,4 +19,4 @@ _ft_strdup:
 	pop		rsi					; restore rdi in rsi
 	call	_ft_strcpy			; rax = ft_strcpy(rdi, rsi)
 	mov		rdi, rsi			; rdi = rsi
-	ret							; return (rax)
+	ret							; return
