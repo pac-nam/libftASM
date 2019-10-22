@@ -6,7 +6,7 @@
 /*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:23:18 by tbleuse           #+#    #+#             */
-/*   Updated: 2019/10/21 15:22:21 by tbleuse          ###   ########.fr       */
+/*   Updated: 2019/10/21 16:27:43 by tbleuse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,13 @@ void		ft_test_memcmp(void)
 	if (resm != ress)
 	{
 		printf("error 12 memcmp:sys %d != mine %d\n", ress, resm);
+		++error;
+	}
+	resm = ft_memcmp("\\200", "1", 1);
+	ress = memcmp("\\200", "1", 1);
+	if (resm != ress)
+	{
+		printf("error 13 memcmp:sys %d != mine %d\n", ress, resm);
 		++error;
 	}
 	ft_memcmp(NULL, "seg", 10);

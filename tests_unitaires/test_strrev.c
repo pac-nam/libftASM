@@ -6,7 +6,7 @@
 /*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:23:18 by tbleuse           #+#    #+#             */
-/*   Updated: 2019/10/21 07:46:20 by tbleuse          ###   ########.fr       */
+/*   Updated: 2019/10/22 09:13:18 by tbleuse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ void		ft_test_strrev(void)
 	char	resm[12];
 	int		i = 3;
 	int		error = 0;
-	char	tmp;
-	int		j;
-	int		j2;
 
 	strcpy(&(resm[0]), "hello world");
 	strcpy(&(ress[0]), "hello world");

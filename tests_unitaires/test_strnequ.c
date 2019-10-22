@@ -6,7 +6,7 @@
 /*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 18:30:52 by thomasbleus       #+#    #+#             */
-/*   Updated: 2019/10/21 12:20:19 by tbleuse          ###   ########.fr       */
+/*   Updated: 2019/10/22 09:13:01 by tbleuse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		ft_test_strnequ(void)
 {
-	int		ress;
 	int		resm;
 	int		error = 0;
 

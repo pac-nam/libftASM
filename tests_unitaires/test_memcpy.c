@@ -6,7 +6,7 @@
 /*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:23:18 by tbleuse           #+#    #+#             */
-/*   Updated: 2019/10/17 16:45:08 by tbleuse          ###   ########.fr       */
+/*   Updated: 2019/10/22 09:12:17 by tbleuse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void		ft_test_memcpy(void)
 	char	sys[6];
 	char	*ress;
 	char	*resm;
-	char	to_copy[6];
 	int		error = 0;
 
 	ft_bzero(&(mine[0]), 6);

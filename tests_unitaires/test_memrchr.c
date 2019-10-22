@@ -6,7 +6,7 @@
 /*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 09:59:01 by thomasbleus       #+#    #+#             */
-/*   Updated: 2019/10/20 13:20:34 by tbleuse          ###   ########.fr       */
+/*   Updated: 2019/10/22 09:12:28 by tbleuse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		ft_test_memrchr(void)
 {
-	void	*ress;
 	void	*resm;
 	int		error = 0;
 
