@@ -48,7 +48,7 @@ int			ft_test_write(void)
 			strerror(my_errno));
 		++error;
 	}
-	printf("write   test end %d errors detected\n", error);
+	printf("write   test end %d error detected\n", error);
 	return (error);
 }
 

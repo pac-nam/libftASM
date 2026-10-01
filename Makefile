@@ -30,6 +30,8 @@ SRC_FOLDER = srcs
 
 T_FOLDER = tests_unitaires
 
+TEST_OBJ_FOLDER = $(T_FOLDER)/objs
+
 TEST_EXE_FOLDER = $(T_FOLDER)/exe
 
 SRC_FILES = ft_memcmp.s						\
@@ -54,9 +56,13 @@ OBJ = $(addprefix $(OBJ_FOLDER)/, $(SRC_FILES:.s=.o))
 
 TEST_BINS = $(addprefix $(TEST_EXE_FOLDER)/, $(TEST_FILES:.c=.exe))
 
+TEST_OBJS = $(addprefix $(TEST_OBJ_FOLDER)/, $(TEST_FILES:.c=.o))
+
+.SECONDARY: $(TEST_OBJS)
+
 all: $(NAME)
 
-$(NAME): $(OBJ_FOLDER) $(OBJ)
+$(NAME): $(OBJ)
 	@ar rc $@ $(OBJ)
 	@ranlib $@
 	@echo "\033[32m[ V ] $@ compiled\033[0m"
@@ -65,11 +71,12 @@ $(OBJ_FOLDER):
 	@mkdir -p $@
 	@echo "creating $(NAME) object..."
 
-$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.s
+
+$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.s | $(OBJ_FOLDER)
 	@$(CASM) $(CASMFLAGS) $< -o $@
 
 clean:
-	@/bin/rm -rf $(OBJ_FOLDER)
+	@/bin/rm -rf $(OBJ_FOLDER) $(TEST_OBJ_FOLDER)
 	@echo "\033[33m[ V ] $(NAME) objects deleted\033[0m"
 
 fclean: clean
@@ -84,11 +91,17 @@ re: fclean all
 test: $(TEST_BINS)
 	@set -e; for test in $(TEST_BINS); do ./$$test; done
 
+$(TEST_OBJ_FOLDER):
+	@mkdir -p $@
+
 $(TEST_EXE_FOLDER):
 	@mkdir -p $@
 
-$(TEST_EXE_FOLDER)/%.exe: $(T_FOLDER)/%.c $(NAME) | $(TEST_EXE_FOLDER)
-	@$(CC) $(FLAGS) -I $(INCLUDE_FOLDER) $< $(NAME) -o $@
+$(TEST_OBJ_FOLDER)/%.o: $(T_FOLDER)/%.c $(INCLUDE_FOLDER)/libftasm.h | $(TEST_OBJ_FOLDER)
+	@$(CC) $(FLAGS) -I $(INCLUDE_FOLDER) -c $< -o $@
+
+$(TEST_EXE_FOLDER)/%.exe: $(TEST_OBJ_FOLDER)/%.o $(NAME) | $(TEST_EXE_FOLDER)
+	@$(CC) $(FLAGS) $< $(NAME) -o $@
 	@echo "\033[32m[ V ] $@ compiled\033[0m"
 
 .PHONY: test
