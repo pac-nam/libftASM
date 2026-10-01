@@ -32,73 +32,17 @@ SRC_FOLDER = srcs
 
 T_FOLDER = tests_unitaires
 
-SRC_FILES = ft_bzero.s						\
-			ft_cat.s						\
-			ft_isalnum.s					\
-			ft_isalpha.s					\
-			ft_isascii.s					\
-			ft_isdigit.s					\
-			ft_isprint.s					\
+SRC_FILES = ft_memcmp.s						\
 			ft_memcpy.s						\
-			ft_memset.s						\
-			ft_puts.s						\
-			ft_strcat.s						\
+			ft_strcmp.s						\
 			ft_strcpy.s						\
 			ft_strdup.s						\
 			ft_strlen.s						\
-			ft_tolower.s					\
-			ft_toupper.s					\
-			ft_memcmp.s						\
-			ft_strcmp.s						\
-			ft_memchr.s						\
-			ft_strchr.s						\
-			ft_memrev.s						\
-			ft_memrchr.s					\
-			ft_strrchr.s					\
-			ft_strncmp.s					\
-			ft_strequ.s						\
-			ft_strnequ.s					\
-			ft_strrev.s						\
-			ft_strnchr.s					\
-			ft_strstr.s						\
-			ft_putchar.s					\
-			ft_putchar_fd.s					\
-			ft_putstr.s						\
-			ft_putstr_fd.s					\
-			ft_putendl.s					\
-			ft_putendl_fd.s					\
 
-TEST_FILES = main_test.c					\
-			test_bzero.c					\
-			test_cat.c						\
-			test_isalnum.c					\
-			test_isalpha.c					\
-			test_isascii.c					\
-			test_isdigit.c					\
-			test_isprint.c					\
-			test_memcpy.c					\
-			test_memset.c					\
-			test_puts.c						\
-			test_strcat.c					\
-			test_strcpy.c					\
-			test_strdup.c					\
-			test_strlen.c					\
-			test_tolower.c					\
-			test_toupper.c					\
-			test_memcmp.c					\
-			test_strcmp.c					\
-			test_memchr.c					\
-			test_strchr.c					\
-			test_memrev.c					\
-			test_memrchr.c					\
-			test_strrchr.c					\
-			test_strncmp.c					\
-			test_strequ.c					\
-			test_strnequ.c					\
-			test_strrev.c					\
-			test_strnchr.c					\
-			test_strstr.c					\
-			test_puttrucs.c					\
+TEST_FILES = test_strcmp.c					\
+			 test_strcpy.c					\
+			 test_strdup.c					\
+			 test_strlen.c					\
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
 
