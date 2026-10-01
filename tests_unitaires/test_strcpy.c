@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+
 #include "libftasm.h"
 
-void		ft_test_strcpy(void)
+int			ft_test_strcpy(void)
 {
 	char	mine[6];
 	char	sys[6];
@@ -82,4 +84,10 @@ void		ft_test_strcpy(void)
 		++error;
 	}
 	printf("strcpy  test end %d error detected\n", error);
+	return (error);
+}
+
+int			main(void)
+{
+	return (ft_test_strcpy());
 }

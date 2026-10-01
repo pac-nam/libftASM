@@ -19,13 +19,13 @@
 # include <unistd.h>
 # include <strings.h>
 
+int		ft_memcmp(void *ptr, void *ptr2, size_t size);
 void	*ft_memcpy(void *dst, void *src, size_t size);
-void	*ft_memset(void *ptr, int c, size_t size);
+ssize_t  ft_read(int fd, void *buf, size_t count);
+int		ft_strcmp(char *str, char *str2);
 char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);
-
-int		ft_memcmp(void *ptr, void *ptr2, size_t size);
-int		ft_strcmp(char *str, char *str2);
+ssize_t  ft_write(int fd, const void *buf, size_t count);
 
 #endif

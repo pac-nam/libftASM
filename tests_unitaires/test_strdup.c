@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+
 #include "libftasm.h"
 
 void		strdel(char *str)
@@ -19,7 +21,7 @@ void		strdel(char *str)
 	str = NULL;
 }
 
-void		ft_test_strdup(void)
+int		ft_test_strdup(void)
 {
 	char	*mine;
 	char	*sys;
@@ -50,4 +52,10 @@ void		ft_test_strdup(void)
 		++error;
 	}
 	printf("strdup  test end %d error detected\n", error);
+	return (error);
+}
+
+int			main(void)
+{
+	return (ft_test_strdup());
 }

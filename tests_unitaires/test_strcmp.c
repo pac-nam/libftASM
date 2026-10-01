@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+
 #include "libftasm.h"
 
-void		ft_test_strcmp(void)
+int			ft_test_strcmp(void)
 {
 	int		ress;
 	int		resm;
@@ -57,4 +59,10 @@ void		ft_test_strcmp(void)
 	ft_strcmp("seg", NULL);
 	ft_strcmp(NULL, NULL);
 	printf("strcmp  test end %d error detected\n", error);
+	return (error);
+}
+
+int			main(void)
+{
+	return (ft_test_strcmp());
 }

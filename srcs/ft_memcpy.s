@@ -1,11 +1,11 @@
 section .text
-	global _ft_memcpy
+	global ft_memcpy
 
 .return:
 	pop		rax			; restore rdi in rax
 	ret					; return
 
-_ft_memcpy:
+ft_memcpy:
 	push	rdi			; save rdi
 	cmp		rdi, 0		; if (rdi == NULL)
 	je		.return		; jump to return

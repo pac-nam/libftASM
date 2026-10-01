@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+
 #include "libftasm.h"
 
-void		ft_test_strlen(void)
+int		ft_test_strlen(void)
 {
 	char	str[11];
 	int		i = 11;
@@ -30,4 +32,10 @@ void		ft_test_strlen(void)
 	}
 	ft_strlen(NULL);
 	printf("strlen  test end %d error detected\n", error);
+	return (error);
+}
+
+int			main(void)
+{
+	return (ft_test_strlen());
 }

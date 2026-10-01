@@ -1,5 +1,5 @@
 section .text
-	global _ft_memcmp
+	global ft_memcmp
 
 .rdi_null:
 	cmp		rsi, 0
@@ -16,7 +16,7 @@ section .text
 	mov		rax, 0				; rax = 0
 	ret							; return
 
-_ft_memcmp:
+ft_memcmp:
 	cmp		rdx, 0				; if (rdx == 0)
 	je		.return_zero		; jump to return
 	cmp		rdi, 0				; if (rdi == NULL)

@@ -10,21 +10,19 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libfts.a
-
-T_NAME = test
+NAME = libasm.a
 
 CC = gcc
 
 CASM = nasm
+
+CASMFLAGS = -f elf64
 
 FLAGS = -Wall -Wextra -Werror
 
 SRC_FOLDER = srcs
 
 INCLUDE_FOLDER = includes
-
-T_OBJ_FOLDER = tests_objs
 
 OBJ_FOLDER = objs
 
@@ -38,19 +36,21 @@ SRC_FILES = ft_memcmp.s						\
 			ft_strcpy.s						\
 			ft_strdup.s						\
 			ft_strlen.s						\
+			ft_read.s						\
+			ft_write.s						\
 
 TEST_FILES = test_strcmp.c					\
 			 test_strcpy.c					\
 			 test_strdup.c					\
 			 test_strlen.c					\
+			 test_read.c					\
+			 test_write.c					\
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(SRC_FILES))
 
-T_SRC = $(addprefix $(T_FOLDER)/, $(TEST_FILES))
-
 OBJ = $(addprefix $(OBJ_FOLDER)/, $(SRC_FILES:.s=.o))
 
-T_OBJ = $(addprefix $(T_OBJ_FOLDER)/, $(TEST_FILES:.c=.o))
+TEST_BINS = $(TEST_FILES:.c=.exe)
 
 all: $(NAME)
 
@@ -64,32 +64,25 @@ $(OBJ_FOLDER):
 	@echo "creating $(NAME) object..."
 
 $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.s
-	@$(CASM) -f macho64 $< -o $@
+	@$(CASM) $(CASMFLAGS) $< -o $@
 
 clean:
-	@/bin/rm -rf $(OBJ_FOLDER) $(T_OBJ_FOLDER)
+	@/bin/rm -rf $(OBJ_FOLDER)
 	@echo "\033[33m[ V ] $(NAME) objects deleted\033[0m"
-	@echo "\033[33m[ V ] $(T_NAME) objects deleted\033[0m"
 
 fclean: clean
-	@/bin/rm -f $(NAME) $(T_NAME)
+	@/bin/rm -f $(NAME) $(TEST_BINS)
 	@echo "\033[33m[ V ] $(NAME) deleted\033[0m"
-	@echo "\033[33m[ V ] $(T_NAME) deleted\033[0m"
 
 lib: all clean
 
 re: fclean all
 
-$(T_NAME) : $(NAME) $(T_OBJ_FOLDER) $(T_OBJ)
-	@$(CC) $(T_OBJ) $(NAME) -o $(T_NAME)
+test: $(TEST_BINS)
+	@set -e; for test in $(TEST_BINS); do ./$$test; done
+
+%.exe: $(T_FOLDER)/%.c $(NAME)
+	@$(CC) $(FLAGS) -I $(INCLUDE_FOLDER) $< $(NAME) -o $@
 	@echo "\033[32m[ V ] $@ compiled\033[0m"
-	@./$(T_NAME)
 
-$(T_OBJ_FOLDER):
-	@mkdir -p $@
-	@echo "creating $(T_NAME) object..."
-
-$(T_OBJ_FOLDER)/%.o: $(T_FOLDER)/%.c
-	@$(CC) -I includes -c $(FLAGS) $< -o $@
-
-.PHONY: $(T_NAME)
+.PHONY: test

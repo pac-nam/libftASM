@@ -1,22 +1,25 @@
 section .text
-	global _ft_strdup
-	extern _ft_strcpy
-	extern _ft_strlen
-	extern _malloc
+	global ft_strdup
+	extern ft_strcpy
+	extern ft_strlen
+	extern malloc
 
 .return:
 	pop		rax					; restore rdi in rax
+	mov		rax, 0				; rax = 0
 	ret							; return
 
-_ft_strdup:
+ft_strdup:
 	push	rdi					; save rdi
 	cmp		rdi, 0				; if (rdi == NULL)
 	je		.return				; jump to .return
-	call	_ft_strlen			; rax = ft_strlen(rdi)
+	call	ft_strlen			; rax = ft_strlen(rdi)
 	mov		rdi, rax			; rdx = rax
-	call	_malloc				; rax = malloc(rdi)
+    call    malloc wrt ..plt   ; rax = malloc(rdi) through the Procedure Linkage Table
+    cmp    	rax, 0				; if (rax == 0)
+    je      .return				; jump to .return
 	mov		rdi, rax			; rdi = rax
 	pop		rsi					; restore rdi in rsi
-	call	_ft_strcpy			; rax = ft_strcpy(rdi, rsi)
+	call	ft_strcpy			; rax = ft_strcpy(rdi, rsi)
 	mov		rdi, rsi			; rdi = rsi
 	ret							; return
