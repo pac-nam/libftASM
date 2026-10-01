@@ -5,18 +5,18 @@ section .text
     extern __errno_location
 
 ft_write:
-    mov     rax, 1          ; write id
+    mov     rax, 1          ; rax = write syscall id
     syscall
-    cmp     rax, 0          ; if return of write < 0
-    jl      .handle_error
-    ret
+    cmp     rax, 0          ; if (rax < 0)
+    jl      .handle_error  ; jump to .handle_error
+    ret                    ; return
 
 .handle_error:
-    neg     rax             ; convert -errno to errno
-    mov     edi, eax        ; errno as 32 bit
-    push    rax
-    call    __errno_location wrt ..plt
-    pop     rdi
-    mov     [rax], edi      ; *errno = error
-    mov     rax, -1         ; return -1 as error
+    neg     rax             ; rax = errno
+    mov     edi, eax        ; edi = errno
+    push    rax             ; save errno
+    call    __errno_location wrt ..plt ; rax = &errno
+    pop     rdi             ; restore errno
+    mov     [rax], edi      ; *errno = edi
+    mov     rax, -1         ; return -1
     ret
