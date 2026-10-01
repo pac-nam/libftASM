@@ -17,7 +17,7 @@ ft_strdup:
 	je		.return				; jump to .return
 	call	ft_strlen			; rax = ft_strlen(rdi)
 	mov		rdi, rax			; rdx = rax
-    call    malloc wrt ..plt   ; rax = malloc(rdi) through the Procedure Linkage Table
+    call    malloc wrt ..plt    ; rax = malloc(rdi) through the Procedure Linkage Table
     cmp    	rax, 0				; if (rax == 0)
     je      .return				; jump to .return
 	mov		rdi, rax			; rdi = rax
