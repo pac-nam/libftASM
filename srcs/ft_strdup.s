@@ -1,3 +1,5 @@
+section .note.GNU-stack
+
 section .text
 	global ft_strdup
 	extern ft_strcpy

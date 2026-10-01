@@ -1,89 +1,109 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_read.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbleuse <tbleuse@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/17 16:24:58 by tbleuse           #+#    #+#             */
+/*   Updated: 2026/10/01 00:00:00 by tbleuse          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <errno.h>
+#include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
-#include <fcntl.h>
-#include <errno.h>
 
 #include "libftasm.h"
 
-int	test_errno(char *buffer, char *my_buffer)
+int			ft_test_read(void)
 {
-	int		my_result;
+	char	buffer[15];
+	char	my_buffer[15];
+	ssize_t	result;
+	ssize_t	my_result;
+	int		fd;
+	int		my_fd;
 	int		real_errno;
 	int		my_errno;
-	int		result;
+	int		real_ok = 0;
+	int		my_ok = 0;
 	int		error = 0;
 
-	printf("\nTest for read WITH ERRNO\n");
-	result = read(-1, buffer, 14);
-	real_errno = errno;
-	my_result = ft_read(-1, my_buffer, 14);
-	my_errno = errno;
-	if (real_errno != my_errno)
+	fd = open("Makefile", O_RDONLY);
+	if (fd == -1)
 	{
-		printf("Real error return: %d\n", result);
-		printf("Real errno: %d (%s)\n", real_errno, strerror(real_errno));
-		printf("My error return: %d\n", my_result);
-		printf("My errno: %d (%s)\n", my_errno, strerror(my_errno));
-		printf("ft_read is not working\n");
-		error++;
+		printf("error read: expected to open Makefile, got %s\n",
+			strerror(errno));
+		++error;
 	}
 	else
 	{
-		printf("read returns %d\n", my_result);
-		printf("Errno: %d (%s)\n", my_errno, strerror(my_errno));
-		printf("ft_read is working\n");
+		result = read(fd, buffer, 14);
+		close(fd);
+		if (result < 0)
+		{
+			printf("error read: expected a successful read, got -1 (%s)\n",
+				strerror(errno));
+			++error;
+		}
+		else
+		{
+			buffer[result] = '\0';
+			real_ok = 1;
+		}
 	}
+	my_fd = open("Makefile", O_RDONLY);
+	if (my_fd == -1)
+	{
+		printf("error ft_read: expected to open Makefile, got %s\n",
+			strerror(errno));
+		++error;
+	}
+	else
+	{
+		my_result = ft_read(my_fd, my_buffer, 14);
+		close(my_fd);
+		if (my_result < 0)
+		{
+			printf("error ft_read: expected a successful read, got -1 (%s)\n",
+				strerror(errno));
+			++error;
+		}
+		else
+		{
+			my_buffer[my_result] = '\0';
+			my_ok = 1;
+		}
+	}
+	if (real_ok && my_ok)
+	{
+		if (result != my_result || strcmp(buffer, my_buffer) != 0)
+		{
+			printf("error read: expected %ld bytes \"%.*s\", got %ld bytes \"%.*s\"\n",
+				result, (int)result, buffer, my_result, (int)my_result, my_buffer);
+			++error;
+		}
+	}
+	errno = 0;
+	result = read(-1, buffer, 14);
+	real_errno = errno;
+	errno = 0;
+	my_result = ft_read(-1, my_buffer, 14);
+	my_errno = errno;
+	if (result != -1 || my_result != -1 || real_errno != my_errno)
+	{
+		printf("error read errno: expected return %ld, errno %d (%s); got return %ld, errno %d (%s)\n",
+			result, real_errno, strerror(real_errno), my_result, my_errno,
+			strerror(my_errno));
+		++error;
+	}
+	printf("read    test end %d error detected\n", error);
 	return (error);
 }
 
-void	testing_read(char *buffer, int *result, char *my_buffer, int *my_result)
+int			main(void)
 {
-	int	fd;
-
-	printf("Test for read\n");
-	fd = open("Makefile", O_RDONLY);
-	if (fd == -1)
-		printf("Error in opening file\n");
-	else
-	{
-		*result = read(fd, buffer, 14);
-		buffer[*result] = '\0';
-	}
-	close(fd);
-	fd = open("Makefile", O_RDONLY);
-	if (fd == -1)
-		printf("Error opening file\n");
-	else
-	{
-		*my_result = ft_read(fd, my_buffer, 14);
-		my_buffer[*my_result] = '\0';
-	}
-	close(fd);
-}
-
-int	main(void)
-{
-	char	buffer[15];
-	int		result;
-	char	my_buffer[15];
-	int		my_result;
-
-	testing_read(buffer, &result, my_buffer, &my_result);
-	if (result != my_result || strcmp(buffer, my_buffer) != 0)
-	{
-		printf("Real read returns %d\n", result);
-		printf("Real read file content: %s\n", buffer);
-		printf("My read returns %d\n", my_result);
-		printf("My read file content: %s\n", my_buffer);
-		printf("ft_read is not working\n");
-	}
-	else
-	{
-		printf("read returns %d\n", my_result);
-		printf("read file content: %s", my_buffer);
-		printf("\nft_read is working\n");
-	}
-	test_errno(buffer, my_buffer);
-	return (0);
+	return (ft_test_read());
 }
